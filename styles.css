@@ -4,12 +4,45 @@
   padding: 0;
   box-sizing: border-box;
 }
+.sr-only {
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+  white-space: nowrap;
+}
 
-header {
+.page-btn {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.btn-rock {
+  background-image: url("./assets/images/rock.png");
+}
+
+.btn-paper {
+  background-image: url("./assets/images/paper.png");
+}
+
+.btn-scissors {
+  background-image: url("./assets/images/scissors.png");
+}
+
+.page-header {
   text-align: center;
   margin: 20px 0;
 }
 
-main {
+.page-content {
   text-align: center;
+}
+
+.page-2-content {
+  display: flex;
 }
