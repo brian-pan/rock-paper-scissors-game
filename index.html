@@ -4,28 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Gloria+Hallelujah&family=Gochi+Hand&family=Indie+Flower&family=Nunito+Sans:wght@400;700&family=Nunito:wght@400;700&family=Permanent+Marker&family=Rampart+One&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <div class="page-1">
-      <h1 class="page-header">Rock Paper Scissors</h1>
-      <div class="page-content">
-        <h2>Take Your Pick</h2>
-        <section class="page-btns">
-          <button class="page-btn btn-rock" id="rock">
-            <span class="sr-only">rock</span>
-          </button>
-          <button class="page-btn btn-paper" id="paper">
-            <span class="sr-only">paper</span>
-          </button>
-          <button class="page-btn btn-scissors" id="scissor">
-            <span class="sr-only">scissors</span>
-          </button>
-        </section>
-      </div>
+    <div class="page page-1" id="page-1">
+      <h1 class="page-header">Take Your Pick</h1>
+      <section class="page-content">
+        <button class="page-btn btn-rock" id="rock">
+          <span class="sr-only">rock</span>
+        </button>
+        <button class="page-btn btn-paper" id="paper">
+          <span class="sr-only">paper</span>
+        </button>
+        <button class="page-btn btn-scissors" id="scissor">
+          <span class="sr-only">scissors</span>
+        </button>
+      </section>
     </div>
-    <div class="page-2">
+    <div class="page page-2" id="page-2">
       <div class="">
         <p>You</p>
         <div class="page-score">
@@ -47,8 +50,8 @@
         <p>winner</p>
       </div>
     </div>
-    <div class="page-3">
-      <h2></h2>
+    <div class="page page-3" id="page-3">
+      <h1 id="message"></h1>
       <div class="">
         <p>You</p>
         <div class="page-score">

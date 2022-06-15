@@ -4,6 +4,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  background-image: linear-gradient(to right, #9ab0df, #c5e1f3);
+  color: #002d80;
+  font-family: "Rampart One", cursive;
+  overflow: hidden;
+}
+
 .sr-only {
   height: 1px;
   width: 1px;
@@ -13,36 +21,73 @@
   white-space: nowrap;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.page-content {
+  text-align: center;
+  margin-top: 60px;
+}
+
+h1 {
+  font-size: 72px;
+  text-align: center;
+}
+
 .page-btn {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   border: none;
-  background-size: contain;
+  background-size: 400px;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right;
+  background-color: #fff388;
+  cursor: pointer;
+  margin: 24px;
 }
+
+.page-btn::before {
+  font-family: "Rampart One", cursive;
+  position: relative;
+  top: -150px;
+  font-size: 36px;
+  display: inline-block;
+  width: 200px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: #fff;
+  color: #002d80;
+}
+
+.page-btn:hover {
+  background-color: #9198e5;
+}
+
 .btn-rock {
   background-image: url("./assets/images/rock.png");
+}
+
+.btn-rock::before {
+  content: "Rock";
 }
 
 .btn-paper {
   background-image: url("./assets/images/paper.png");
 }
 
+.btn-paper::before {
+  content: "Paper";
+}
+
 .btn-scissors {
   background-image: url("./assets/images/scissors.png");
 }
 
-.page-header {
-  text-align: center;
-  margin: 20px 0;
-}
-
-.page-content {
-  text-align: center;
-}
-
-.page-2-content {
-  display: flex;
+.btn-scissors::before {
+  content: "Scissors";
 }
