@@ -2,24 +2,24 @@
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissor = document.querySelector("#scissor");
-const userScore = document.querySelectorAll("#user-score");
-const botScore = document.querySelectorAll("#bot-score");
+const userScore = document.querySelector("#user-score");
+const botScore = document.querySelector("#bot-score");
+const userScoreFinal = document.querySelector("#user-score-final");
+const botScoreFinal = document.querySelector("#bot-score-final");
 const userImage = document.querySelector("#user-image");
 const botImage = document.querySelector("#bot-image");
+const userWinnerTag = document.querySelector("#winner-user");
+const botWinnerTag = document.querySelector("#winner-bot");
 const next = document.querySelector("#next");
 const reset = document.querySelector("#reset");
 const message = document.querySelector("#message");
 
 //global variables
-let userMove;
-let botMove;
-let winner;
-let msg = "";
 const scores = {
   user: 0,
   bot: 0,
 };
-let currentPage = 1; //record page number/index
+let currentPage = 1;
 let round = 1;
 
 //fetch bot move from API
@@ -31,9 +31,17 @@ const fetchResult = async () => {
     console.log("Error:", error);
   }
 };
-fetchResult().then((data) => {
-  botMove = data.toLowerCase();
-  console.log("BotMove:", botMove);
+
+window.addEventListener("DOMContentLoaded", () => {
+  fetchResult().then((data) => {
+    botMove = data.toLowerCase();
+  });
+
+  rock.addEventListener("click", onButtonClick);
+  paper.addEventListener("click", onButtonClick);
+  scissor.addEventListener("click", onButtonClick);
+  next.addEventListener("click", onNextRound);
+  reset.addEventListener("click", onReset);
 });
 
 const navigateToPage = (num) => {
@@ -46,21 +54,26 @@ const navigateToPage = (num) => {
 
 //button callback function
 const onButtonClick = (e) => {
-  console.log("round:", round);
-  userMove = e.target.id.toLowerCase();
-  userImage.setAttribute("src", `./assets/images/${userMove}`);
-  botImage.setAttribute("src", `./assets/images/${botMove}`);
-  winner = getWinner(userMove, botMove);
+  const userMove = e.target.id.toLowerCase();
+  userImage.src = `./assets/images/${userMove}.png`;
+  botImage.src = `./assets/images/${botMove}.png`;
+  const winner = getWinner(userMove, botMove);
   updateScore(winner);
-  renderMessage();
-  console.log("UserMove:", userMove);
-  console.log("winner:", winner);
-  console.log(scores);
+  updateWinnerTag(winner);
   round++;
   if (round > 3) {
+    renderMessage();
     navigateToPage(3);
   } else {
     navigateToPage(2);
+  }
+};
+
+const updateWinnerTag = (winner) => {
+  userWinnerTag.style.opacity = 0;
+  botWinnerTag.style.opacity = 0;
+  if (winner) {
+    document.querySelector(`#winner-${winner}`).style.opacity = 1;
   }
 };
 
@@ -81,9 +94,11 @@ const updateScore = (winner) => {
   if (winner === "user") {
     scores.user++;
     userScore.innerText = scores.user;
+    userScoreFinal.innerText = scores.user;
   } else if (winner === "bot") {
     scores.bot++;
     botScore.innerText = scores.bot;
+    botScoreFinal.innerText = scores.bot;
   }
 };
 
@@ -100,7 +115,6 @@ const renderMessage = () => {
 const onNextRound = () => {
   fetchResult().then((data) => {
     botMove = data.toLowerCase();
-    console.log("BotMove:", botMove);
   });
   navigateToPage(1);
 };
@@ -108,15 +122,12 @@ const onNextRound = () => {
 const onReset = () => {
   scores.user = 0;
   scores.bot = 0;
+  userScore.innerText = 0;
+  botScore.innerText = 0;
+  userScoreFinal.innerText = 0;
+  botScoreFinal.innerText = 0;
   round = 1;
-  msg = "";
-  winner = "";
   navigateToPage(1);
 };
 
 //button actions/events
-rock.addEventListener("click", onButtonClick);
-paper.addEventListener("click", onButtonClick);
-scissor.addEventListener("click", onButtonClick);
-next.addEventListener("click", onNextRound);
-reset.addEventListener("click", onReset);

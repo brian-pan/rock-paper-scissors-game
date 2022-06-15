@@ -4,6 +4,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+/* 
+image {
+  width: 100%;
+} */
 
 body {
   background-image: linear-gradient(to right, #9ab0df, #c5e1f3);
@@ -23,13 +27,16 @@ body {
 
 .btn {
   border: none;
-  border-radius: 1em;
-  padding: 20px 40px;
-  font-size: 50px;
+  border-radius: 35px;
+  width: 350px;
+  height: 70px;
+  font-size: 40px;
+  font-weight: 700;
   cursor: pointer;
   background-color: #002d80;
   color: #fff;
   transition: all 0.07s;
+  text-transform: uppercase;
 }
 
 .btn:hover {
@@ -43,6 +50,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  padding: 24px 0;
 }
 
 .page-content {
@@ -105,7 +113,7 @@ h1 {
 }
 
 .btn-scissors {
-  background-image: url("./assets/images/scissors.png");
+  background-image: url("./assets/images/scissor.png");
 }
 
 .btn-scissors::before {
@@ -114,20 +122,51 @@ h1 {
 
 .page-score {
   display: flex;
-  /* justify-content: space-around; */
   font-size: 100px;
   align-items: center;
 }
 
 .page-score div {
   margin: auto 200px;
-  /* border: 1px solid red; */
   background-color: #fff;
   border-radius: 1em;
   padding: 0 50px;
   font-size: 72px;
 }
 
-.page-3 .page-score div {
+.page-2-images {
+  display: flex;
+  height: 450px;
+}
+
+.page-2-images div {
+  flex: 1 1 33%;
+}
+
+.page-2-tags {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.page-winner-tag {
+  background-color: #fff;
+  border-radius: 30px;
+  width: 240px;
+  height: 60px;
+  text-align: center;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.bot-image {
+  transform: scaleX(-1);
+}
+
+.page-3 .page-score {
+  margin: 60px auto;
+}
+
+.page-score div {
   background-color: #fff388;
 }
