@@ -4,3 +4,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+main {
+  text-align: center;
+}
