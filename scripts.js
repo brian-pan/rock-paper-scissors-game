@@ -1,13 +1,17 @@
 //select buttons
-const rock = document.querySelector(".main-btn:nth-of-type(1)");
-const paper = document.querySelector(".main-btn:nth-of-type(2)");
-const scissor = document.querySelector(".main-btn:nth-of-type(3)");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissor = document.querySelector("#scissor");
 
 //global vars
 let userMove;
 let botMove;
 let winner;
-// let msg = "";
+let msg = "";
+const scores = {
+  user: 0,
+  bot: 0,
+};
 
 //fetch bot move from API
 const fetchResult = async () => {
@@ -29,26 +33,34 @@ fetchResult().then((data) => {
 //button callback function
 const onButtonClick = (e) => {
   userMove = e.target.innerText.toLowerCase();
-  compare(userMove, botMove);
+  winner = getWinner(userMove, botMove);
+  renderMsg(winner);
   console.log("UserMove:", userMove);
   console.log("winner:", winner);
   console.log("message:", msg);
 };
 
 //winning conditions
-const compare = (userMove, botMove) => {
+const getWinner = (userMove, botMove) => {
   if (userMove === botMove) {
-    fetchResult().then((data) => {
-      botMove = data.toLowerCase();
-      console.log("second botMove:", botMove);
-    });
-    msg = "Tie! Please select your next move.";
+    return null;
   } else if (botMove === "rock") {
-    userMove === "scissor" ? (winner = "user") : (winner = "bot");
+    return userMove === "scissor" ? "bot" : "user";
   } else if (botMove === "paper") {
-    userMove === "rock" ? (winner = "user") : (winner = "bot");
+    return userMove === "rock" ? "bot" : "user";
   } else {
-    userMove === "paper" ? (winner = "user") : (winner = "bot");
+    return userMove === "paper" ? "bot" : "user";
+  }
+};
+
+//winning messages
+const renderMsg = (winner) => {
+  if (winner === "user") {
+    msg = "Congrats! You win.";
+  } else if (winner === "bot") {
+    msg = "Sorry. You lose.";
+  } else {
+    msg = "Tie! Please try again.";
   }
 };
 
@@ -56,6 +68,3 @@ const compare = (userMove, botMove) => {
 rock.addEventListener("click", onButtonClick);
 paper.addEventListener("click", onButtonClick);
 scissor.addEventListener("click", onButtonClick);
-
-//winning messages
-// winner === "user" ? (msg = "Congrats! You win.") : (msg = "Sorry. You lose.");
