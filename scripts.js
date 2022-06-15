@@ -2,8 +2,10 @@
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissor = document.querySelector("#scissor");
-const userScore = document.querySelector(".page-score-user");
-const botScore = document.querySelector(".page-score-bot");
+const userScore = document.querySelectorAll("#user-score");
+const botScore = document.querySelectorAll("#bot-score");
+const userImage = document.querySelector("#user-image");
+const botImage = document.querySelector("#bot-image");
 const next = document.querySelector("#next");
 const reset = document.querySelector("#reset");
 const message = document.querySelector("#message");
@@ -41,16 +43,19 @@ const navigateToPage = (num) => {
   current.style.display = "none";
   currentPage = num;
 };
+
 //button callback function
 const onButtonClick = (e) => {
+  console.log("round:", round);
   userMove = e.target.id.toLowerCase();
+  userImage.setAttribute("src", `./assets/images/${userMove}`);
+  botImage.setAttribute("src", `./assets/images/${botMove}`);
   winner = getWinner(userMove, botMove);
   updateScore(winner);
+  renderMessage();
   console.log("UserMove:", userMove);
   console.log("winner:", winner);
-  console.log("message:", msg);
   console.log(scores);
-  console.log("round:", round);
   round++;
   if (round > 3) {
     navigateToPage(3);
@@ -75,8 +80,10 @@ const getWinner = (userMove, botMove) => {
 const updateScore = (winner) => {
   if (winner === "user") {
     scores.user++;
+    userScore.innerText = scores.user;
   } else if (winner === "bot") {
     scores.bot++;
+    botScore.innerText = scores.bot;
   }
 };
 
@@ -101,7 +108,6 @@ const onNextRound = () => {
 const onReset = () => {
   scores.user = 0;
   scores.bot = 0;
-  currentPage = 1;
   round = 1;
   msg = "";
   winner = "";

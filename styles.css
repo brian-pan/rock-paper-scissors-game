@@ -21,10 +21,27 @@ body {
   white-space: nowrap;
 }
 
+.btn {
+  border: none;
+  border-radius: 1em;
+  padding: 20px 40px;
+  font-size: 50px;
+  cursor: pointer;
+  background-color: #002d80;
+  color: #fff;
+  transition: all 0.07s;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #002d80;
+}
+
 .page {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
@@ -34,7 +51,7 @@ body {
 }
 
 h1 {
-  font-size: 72px;
+  font-size: 100px;
   text-align: center;
 }
 
@@ -59,13 +76,16 @@ h1 {
   display: inline-block;
   width: 200px;
   height: 60px;
-  border-radius: 30px;
+  border-radius: 1em;
   background-color: #fff;
   color: #002d80;
+  transition: all 0.1s;
 }
 
 .page-btn:hover {
   background-color: #9198e5;
+  transform: scale(1.02);
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.3);
 }
 
 .btn-rock {
@@ -90,4 +110,24 @@ h1 {
 
 .btn-scissors::before {
   content: "Scissors";
+}
+
+.page-score {
+  display: flex;
+  /* justify-content: space-around; */
+  font-size: 100px;
+  align-items: center;
+}
+
+.page-score div {
+  margin: auto 200px;
+  /* border: 1px solid red; */
+  background-color: #fff;
+  border-radius: 1em;
+  padding: 0 50px;
+  font-size: 72px;
+}
+
+.page-3 .page-score div {
+  background-color: #fff388;
 }

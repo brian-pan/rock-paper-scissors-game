@@ -29,22 +29,22 @@
       </section>
     </div>
     <div class="page page-2" id="page-2">
-      <div class="">
+      <div class="page-score">
         <p>You</p>
-        <div class="page-score">
-          <span class="page-score-user">0</span>
-          <span class="page-score-x">X</span>
-          <span class="page-score-bot">0</span>
+        <div class="page-score-number">
+          <span id="user-score">0</span>
+          <span>X</span>
+          <span id="bot-score">0</span>
         </div>
         <p>Bot</p>
       </div>
-      <div>
-        <img src="./assets/" alt="rock" />
-        <img src="" alt="paper" />
-        <img src="" alt="scissors" />
+      <div class="page-images">
+        <img src="./assets/images/rock.png" alt="rock" id="user-image" />
+        <img src="./assets/images/x.png" alt="paper" />
+        <img src="" alt="scissors" id="bot-image" />
       </div>
       <div>
-        <button id="next">Next Round</button>
+        <button class="btn" id="next">NEXT ROUND</button>
       </div>
       <div>
         <p>winner</p>
@@ -52,16 +52,18 @@
     </div>
     <div class="page page-3" id="page-3">
       <h1 id="message"></h1>
-      <div class="">
+      <div class="page-score">
         <p>You</p>
-        <div class="page-score">
-          <span class="page-score-user">0</span>
-          <span class="page-score-x">X</span>
-          <span class="page-score-bot">0</span>
+        <div class="page-score-number">
+          <span id="user-score"></span>
+          <span>X</span>
+          <span id="bot-score"></span>
         </div>
         <p>Bot</p>
       </div>
-      <button id="reset">Play Again</button>
+      <div class="page-reset">
+        <button class="btn" id="reset">PLAY AGAIN</button>
+      </div>
     </div>
 
     <script src="./scripts.js"></script>
